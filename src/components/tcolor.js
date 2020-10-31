@@ -39,6 +39,7 @@ class Tcolor extends Component {
     render() {
         const { squareData } = this.props
         const {windowHeight} = this.state
+        let y  = 5
 
      
         console.log("squareData : ", squareData)
