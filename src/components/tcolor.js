@@ -39,7 +39,7 @@ class Tcolor extends Component {
     render() {
         const { squareData } = this.props
         const {windowHeight} = this.state
-        let y  = 87887
+        
 
      
         console.log("squareData : ", squareData)
@@ -53,11 +53,11 @@ class Tcolor extends Component {
          for (let i = 0; i < squareData.length; i++) {
              
              oneRow = squareData[i].map(item =>
-                 <Col key={uuid()} xs={1} style = { { backgroundColor: item[0], border: item[1] + " " + item[2] + " " + item[3] }} >
+                 <Col className="d-flex align-items-center justify-content-center" key={uuid()} xs={1} style = { { backgroundColor: item[0], border: item[1] + " " + item[2] + " " + item[3] }} >
                      <Button>{item[1]}</Button>
                  </Col>
              )
-             oneRow = <Row style = {rawHeight}>
+             oneRow = <Row  style = {rawHeight}>
                  {oneRow}
              </Row>
              arrRows.push(oneRow)
@@ -88,4 +88,3 @@ class Tcolor extends Component {
 }
 
 export default Tcolor
-
