@@ -12,9 +12,12 @@ class Tcolor extends Component {
         super(props);
         this.state = {
             windowWidth: window.innerWidth,
-            windowHeight: window.innerHeight
+            windowHeight: window.innerHeight,
+            currTable: []
         }
     }
+
+
 
     handleResize = (e) => {
         this.setState({
@@ -27,52 +30,78 @@ class Tcolor extends Component {
 
     componentDidMount() {
         window.addEventListener("resize", this.handleResize);
+
     }
 
     componentWillUnmount() {
         window.addEventListener("resize", this.handleResize);
     }
 
-    
+    arrayEquals = (a, b) => {
+        return Array.isArray(a) &&
+            Array.isArray(b) &&
+            a.length === b.length &&
+            a.every((val, index) => val === b[index]);
+    }
 
+    componentDidUpdate(prevProps) {
+        const { squareData } = this.props
+        const { currTable } = this.state
+        // console.log("squareData ", squareData)
+        // console.log("currTable ", currTable)
+        let b = this.arrayEquals(squareData, currTable)
+        //console.log("BBBBBBBBBBBBBBBBBBB ",  b)
+        if (currTable !== squareData) {
+            //  console.log("STATE CHANGE")
+            this.setState({ currTable: squareData })
+        }
+
+    }
 
     render() {
-        const { squareData } = this.props
-        const {windowHeight} = this.state
-        
 
-     
-        console.log("squareData : ", squareData)
+        const { windowHeight, currTable } = this.state
+
+
+
+        //console.log("TColor render currTable : ", currTable)
+        //console.log("TColor render currTable len : ", currTable.length)
         let oneRow = []
 
         let forRender, arrRows = []
-        //let bgColorbtn = { backgroundColor: "#b023cd" };
-        let rawHeight = { height: Math.round(windowHeight / squareData.length, 0) + "px"} 
+        if (currTable.length > 0) {
+            //console.log("TColor render currTable : > 000 ", currTable)
+            //let bgColorbtn = { backgroundColor: "#b023cd" };
+            let rawHeight = { height: Math.round(windowHeight / currTable.length, 0) + "px" }
 
 
-         for (let i = 0; i < squareData.length; i++) {
-             
-             oneRow = squareData[i].map(item =>
-                 <Col className="d-flex align-items-center justify-content-center" key={uuid()} xs={1} style = { { backgroundColor: item[0], border: item[1] + " " + item[2] + " " + item[3] }} >
-                     <Button>{item[1]}</Button>
-                 </Col>
-             )
-             oneRow = <Row  style = {rawHeight}>
-                 {oneRow}
-             </Row>
-             arrRows.push(oneRow)
-         }
+            for (let i = 0; i < currTable.length; i++) {
 
-         forRender = arrRows.map(item =>
-             <div key={uuid()} >
-                 {item}
-             </div>
-         )
+                oneRow = currTable[i].map(item =>
+                    <Col className="d-flex align-items-center justify-content-center" key={uuid()} xs={1} style={{ backgroundColor: item[0], border: item[1] + " " + item[2] + " " + item[3] }} >
+                        <Button>{item[0]}</Button>
+                    </Col>
+                )
+                oneRow = <Row style={rawHeight}>
+                    {oneRow}
+                </Row>
+                arrRows.push(oneRow)
+            }
 
-        forRender = <Container fluid >
-            {forRender}
-        </Container>
+            forRender = arrRows.map(item =>
+                <div key={uuid()} >
+                    {item}
+                </div>
+            )
 
+            forRender = <Container fluid >
+                {forRender}
+            </Container>
+
+        } else {
+            forRender = <></>
+
+        }
 
 
 
