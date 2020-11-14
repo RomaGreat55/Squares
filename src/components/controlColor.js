@@ -67,7 +67,7 @@ class ControlColor extends Component {
       for (let j = 0; j < lenRow; j++) {
         rowBgColor.push(this.getRandomStr(3))
         rowColor.push(this.getRandomStr(3))
-        rowWidth.push(this.getWithBorder(20))
+        rowWidth.push(this.getWithBorder(10))
         rowType.push(this.getTypeBorder())
       }
       aColor.push(rowBgColor)
@@ -110,10 +110,10 @@ class ControlColor extends Component {
 
 
   changeArr = async (arr) => {
+    let rMaxIndex = arr[0].length
+    let cMaxIndex = arr.length
     if ((arr) && (arr.length > 0)) {
-      //console.log("this is changeArr 1111")
       return new Promise(resolve => {
-        //console.log("this is changeArr 222222222222")
         let saveColor = arr[0][arr[0].length - 1][0]
         let newArr = [...arr]
         for (let i = arr[0].length - 1; i > 0; i--) {
@@ -127,11 +127,48 @@ class ControlColor extends Component {
         }
         for (let i = arr.length - 1; i > 1; i--) {
           newArr[i][arr[0].length - 1][0] = arr[i - 1][arr[0].length - 1][0]
-          //console.log(i)
-          //console.log("arr.length - 1", arr.length - 1)
-
         }
         newArr[1][arr[0].length - 1][0] = saveColor
+        
+        let oneRow = [...arr[1]]
+        oneRow.shift(0)
+        oneRow[oneRow.length - 1] = arr[2][rMaxIndex - 2] 
+        oneRow[0] = newArr[1][0]
+        oneRow.push(newArr[1][rMaxIndex - 1])
+        newArr[1] = [...oneRow]
+        
+        for (let i = cMaxIndex - 3; i > 2; i--) {
+           console.log("i ", i)
+          // console.log("newArr[i]", [...newArr[i]])
+           console.log("arr[i - 1][1][0]   ", arr[i - 1][1][0]  )
+           console.log("arr[1][1][0]   ", arr[1][1][0]  )
+           console.log("arr[2][1][0]   ", arr[2][1][0]  )
+           console.log("arr[3][1][0]   ", arr[3][1][0]  )
+           let temp = []
+           temp = arr.slice(i - 1, i)
+           console.log("temp ", temp[0][1][0])
+           newArr[i][1][0] = temp[0][1][0]
+        }
+
+        // for (let i = 2; i < cMaxIndex - 2; i++) {
+        //   newArr [i] [rMaxIndex - 2] [0]  = arr [i - 1]  [rMaxIndex - 2] [0] 
+        // }
+
+
+        // oneRow = [...arr[cMaxIndex - 2]]
+        // oneRow.shift(0)
+        // oneRow.unshift(newArr [cMaxIndex - 3][1])
+        // oneRow.shift(oneRow.length - 1)
+        // oneRow[oneRow.length - 1] = arr[cMaxIndex - 2][rMaxIndex - 1] 
+        // newArr[cMaxIndex - 2] = [...oneRow]
+
+
+//        console.log("oneRow", oneRow)
+
+
+
+
+        
         return resolve(newArr)
       })
     }
@@ -145,11 +182,13 @@ class ControlColor extends Component {
 
 
 
+
+
   createRandArr = async () => {
     const { AllBorder } = this.state
-    console.log("AllBorder ", AllBorder)
+    //console.log("AllBorder ", AllBorder)
     await this.changeArr(AllBorder).then(newArr => {
-      console.log("newArr await ins ", newArr)
+      //console.log("newArr await ins ", newArr)
       this.setState({ AllBorder: newArr })
     })
   }
@@ -173,7 +212,7 @@ class ControlColor extends Component {
   }
 
   repeatRandArGenerate = () => {
-    setInterval(this.createRandArr, 300)
+    setInterval(this.createRandArr, 5000)
     //    this.createRandArr()
   }
 

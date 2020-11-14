@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ControlColor from './components/controlColor'
+import Genarray from './components/main-array'
 import './App.css';
 
 class App extends Component {
 
   render() {
+    //render={(props) => <ControlColor/>}
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <div>
@@ -13,7 +15,8 @@ class App extends Component {
 
             <Route
               exact path="/"
-              render={(props) => <ControlColor/>}
+              render={(props) => <ControlColor/>} 
+
             />
           </div>
         </div>
