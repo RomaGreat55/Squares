@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ControlColor from './components/controlColor'
 import Genarray from './components/main-array'
+import Reshator from './components/Equation'
+import ImageSelector from './components/ImageSelector'
+import AutoDon from './components/index'
+import Anvil from './components/hwmAnvil'
 import './App.css';
 
 class App extends Component {
@@ -12,12 +16,25 @@ class App extends Component {
       <Router basename={process.env.PUBLIC_URL}>
         <div>
           <div id="root">
+            <Switch>
+              <Route
+                exact path="/"
+                render={(props) => <Anvil {...props} />}
+              />
+              <Route
+                exact path="/resh"
+                render={(props) => <Reshator {...props} />}
+              />              
+              <Route
+                exact path="/imagesel"
+                render={(props) => <ImageSelector {...props} />}
+              />                            
+              <Route
+                exact path="/genarr"
+                render={(props) => <Genarray {...props} />}
+              />                                          
+            </Switch>
 
-            <Route
-              exact path="/"
-              render={(props) => <ControlColor/>} 
-
-            />
           </div>
         </div>
       </Router>

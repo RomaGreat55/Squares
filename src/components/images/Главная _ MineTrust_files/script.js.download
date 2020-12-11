@@ -1,0 +1,68 @@
+$(function(){
+	$('body').on('click', '[data-modal="item-model"]', function(e){
+		e.preventDefault();
+
+		var that = $(this);
+
+		var item = that.closest('.item-id');
+
+		var modal = $('.modal[data-id="item-model"]');
+
+		modal.find('input[name="d-id"]').val(item.attr('data-id'));
+
+		modal.find('.modal-header').html(item.find('.item-title').html());
+	}).on('click', '[data-modal="item-shop-model"]', function(e){
+		e.preventDefault();
+
+		var that = $(this);
+		
+		var tab = that.closest('.tabs').closest('.tab-id');
+
+		var item = that.closest('.item-id');
+
+		var modal = $('.modal[data-id="item-shop-model"]');
+
+	    var price = item.find('input[name="price"]').val();
+	    
+	    var first = item.find('input[name="first"]').val();
+		modal.find('input[name="id"]').val(item.attr('data-id'));
+		modal.find('input[name="amount"]').val(1);
+		
+		modal.find('input[name="first"]').val(first);
+		modal.find('input[name="server"]').val(tab.attr('id'));
+		modal.find('input[name="price"]').val(price);
+
+		modal.find('.modal-header').html('Покупка предмета «'+item.find('.item-title').html()+'»');
+
+		modal.find('[type="submit"]').html('Купить');
+
+		modal.find('input[name="amount"]').trigger('input');
+	}).on('input', '.modal[data-id="item-shop-model"] input[name="amount"]', function(){
+		var that = $(this);
+
+		var modal = that.closest('.modal');
+
+		var amount = modal.find('input[name="amount"]').val();
+		
+		var first = modal.find('input[name="first"]').val();
+		amount = parseInt(amount);
+
+		if(isNaN(amount) || amount<=0){
+			amount = 1;
+		}
+		
+		if(isNaN(first) || first<=0){
+			first = 1;
+		}
+
+		var price = modal.find('input[name="price"]').val();
+
+		modal.find('[type="submit"]').html('Купить  '+Math.round((amount*first).toFixed(2))+'шт. за '+Math.round((amount*price).toFixed(2))+'Р');
+	}).on('click', '.slide-to-shop', function(e){
+		e.preventDefault();
+
+		$('html, body').animate({
+			scrollTop: $("#shop").offset().top
+		}, 1000, 'easeOutQuint');
+	});
+});

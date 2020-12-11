@@ -1,0 +1,306 @@
+body > .container {
+	padding-top: 35px;
+	min-height: calc(100vh - 200px);
+	padding-bottom: 35px;
+}
+
+body > .container > .header {
+	padding: 76px 124px;
+	background-color: #fff1f1;
+	border-radius: 15px;
+	word-break: break-word;
+	background-image: url("../img/main_mine.png");
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	background-size: contain;
+	text-shadow: 1px 1px 2px #fff1f1;
+}
+
+body > .container > .header > .header-content {
+	max-width: 500px;
+}
+
+body > .container > .header > .header-content > .title {
+	font-size: 48px;
+	font-weight: 600;
+	padding-bottom: 35px;
+}
+
+body > .container > .header > .header-content > .text {
+	font-size: 16px;
+	line-height: 24px;
+}
+
+body > .container > .header > .header-footer {
+	padding-top: 35px;
+	font-size: 18px;
+}
+
+.link-arrow:after {
+	width: 45px;
+	height: 14px;
+	line-height: 22px;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+	background-position: center right;
+	background-image: url("../img/link-arrow.png");
+	content: "";
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+body > .container > .title-block {
+	display: block;
+	line-height: 35px;
+	font-weight: 600;
+	font-size: 36px;
+	padding-left: 57px;
+	position: relative;
+	margin-top: 75px;
+	margin-bottom: 55px;
+}
+
+body > .container > .title-block:before {
+	display: block;
+	content: "";
+	width: 27px;
+	height: 35px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-position: top left;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-image: url("../img/fire.png");
+}
+
+body > footer {
+	height: 100px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.signal {
+	display: inline-block;
+	vertical-align: middle;
+	height: 28px;
+	line-height: 27px;
+	position: relative;
+	width: 14px;
+}
+
+.signal:after {
+	display: block;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 14px;
+	height: 14px;
+	box-sizing: border-box;
+	background-color: #f00;
+	border-radius: 50%;
+	border: 3px solid #ffd9d9;
+}
+
+.items {
+	display: grid;
+	grid-gap: 50px;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: start;
+	padding-left: 30px;
+}
+
+.items > .item-id > .item-image {
+	width: 100%;
+	height: 280px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	line-height: 280px;
+	padding: 0 55px;
+	margin: auto;
+}
+
+.items > .item-id > .item-image > .btn {
+	vertical-align: middle;
+	width: 100%;
+	opacity: 0;
+}
+
+.items > .item-id:hover > .item-image > .btn {
+	opacity: 1;
+}
+
+.items > .item-id > .item-title {
+	font-weight: bold;
+	font-size: 18px;
+	color: #202020;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.items > .item-id > .item-price {
+	padding-top: 10px;
+	color: #f00;
+	font-size: 18px;
+	text-align: center;
+}
+
+.shop-items {
+	display: grid;
+	align-items: start;
+	grid-template-columns: repeat(4, 1fr);
+	grid-row-gap: 35px;
+	grid-column-gap: 50px;
+}
+
+.shop-items > .item-id {
+	height: 275px;
+	border-radius: 15px;
+	background-color: #f3f3f3;
+}
+
+.shop-items > .item-id > .item-image {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-origin: content-box;
+	height: 150px;
+	width: 100%;
+	padding: 25px;
+}
+
+.shop-items > .item-id > .item-title {
+	font-weight: 600;
+	font-size: 22px;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.shop-items > .item-id > .item-price {
+	font-weight: 600;
+	font-size: 16px;
+	text-align: center;
+	opacity: 0.5;
+	padding-top: 6px;
+	padding-bottom: 25px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.modal[data-id="contacts"] .modal-body{
+	font-size: 14px;
+	line-height: 25px;
+	font-weight: 600;
+}
+
+.modal[data-id="contacts"] > .wrapper > .modal-content > .modal-body {
+	padding: 25px 130px;
+}
+
+.modal[data-id="contacts"] > .wrapper > .modal-content > .modal-body > div {
+	padding-bottom: 25px;
+}
+
+.modal[data-id="contacts"] > .wrapper > .modal-content > .modal-body > div:last-child {
+	padding: 0;
+}
+
+.icon-con-mail,
+.icon-con-vk {
+	display: inline-block;
+	vertical-align: middle;
+	width: 25px;
+	height: 25px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url("../img/1.png");
+}
+
+.icon-con-vk {
+	background-image: url("../img/2.png");
+}
+
+.modal[data-id="donate"] > .wrapper{
+	width: 1000px;
+}
+
+.modal[data-id="donate"] > .wrapper > .modal-content > .modal-body {
+	padding: 0;
+	font-size: 14px;
+	line-height: 25px;
+	font-weight: 600;
+}
+
+.donate-wrapper {
+	word-break: break-word;
+	padding: 4px;
+}
+
+.donate-wrapper > .donate-list {
+	max-height: calc(100vh - 112px);
+	overflow: auto;
+}
+
+.donate-wrapper > .donate-list > .donate-id {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: start;
+	padding-bottom: 80px;
+}
+
+.donate-wrapper > .donate-list > .donate-id > .block-left {
+	padding: 0 60px;
+}
+
+.donate-wrapper > .donate-list > .donate-id:first-child {
+	padding-top: 80px;
+}
+
+.donate-wrapper > .donate-list > .donate-id .donate-title {
+	font-size: 30px;
+	font-weight: 600;
+}
+
+.donate-wrapper > .donate-list > .donate-id .donate-title .price {
+	font-size: 14px;
+	font-weight: 500;
+	margin-left: 25px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.donate-wrapper > .donate-list > .donate-id .donate-server {
+	padding-top: 30px;
+	font-weight: 600;
+}
+
+.donate-wrapper > .donate-list > .donate-id .donate-image {
+	width: 100%;
+	height: 420px;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: contain;
+	background-origin: content-box;
+}
+
+.donate-wrapper > .donate-list > .donate-id .donate-info {
+	padding-top: 30px;
+}
+
+.donate-wrapper > .donate-list > .donate-id .donate-info > ul > li {
+	list-style: none;
+	display: block;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.donate-wrapper > .donate-list::-webkit-scrollbar{
+	background-color: #fff;
+}

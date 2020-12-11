@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
 class ShowArr extends Component {
     state = {
-        currArr: []
+        currArr: [],
+        notEnought: []
     }
-
 
 
     componentDidMount() {
         const { exampleArray } = this.props
-        console.log("didmount")
-         console.log("exampleArray", exampleArray)
+        const { exampleArray2 } = this.props
+//        console.log("didmount")
+  //      console.log("exampleArray", exampleArray)
         // console.log("this.props", this.props)
         this.setState({ currArr: exampleArray })
 
@@ -22,13 +20,18 @@ class ShowArr extends Component {
 
     componentDidUpdate(prevProps) {
         const { exampleArray } = this.props
+        const { exampleArray2 } = this.props
         const { currArr } = this.state
+        const { currArr2 } = this.state
         //console.log("exampleArray", exampleArray)
         //console.log("currArr", currArr)
         if (exampleArray !== currArr) {
-             console.log("STATE CHANGE")
             this.setState({ currArr: exampleArray  })
         }
+        if (exampleArray2 !== currArr2) {
+           this.setState({ currArr2: exampleArray2  })
+       }
+       
 
     }
 
@@ -36,11 +39,13 @@ class ShowArr extends Component {
     render() {
 
         const { currArr } = this.state
+        const { currArr2 } = this.state
         //console.log("currArr", currArr)
 
         return (
             <div>
                 <h3>{currArr}</h3>
+                <h3>{currArr2}</h3>
 
             </div>
         )
